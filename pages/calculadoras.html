@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Academia & Bem-estar | Seu Parceiro em Resultados</title>
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2936/2936886.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>FitLife</h1>
+            <img src="../assets/favicon.png" alt="imagem da logo" class="fit-life-logo">
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">Início</a> 
+            <a href="../pages/treinos.html">Treinos</a>
+            <a href="nutricao.html">Nutrição</a>
+            <a href="suplementacao.html">Suplementação</a>
+            <a href="calculadoras.html">Calculadoras</a>
+        </div>
+        <div class="menu-mobile">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+<!--De hoje! 21/10-->
+
+ <!-- Seção da Calculadora de IMC -->
+    <section class="imc-calculator-section">
+        <h2>Calculadora de IMC</h2>
+        
+        <div class="imc-container">
+            <div class="imc-input-group">
+                <label for="peso">Peso (kg)</label>
+                <input type="number" id="peso" placeholder="Ex: 70" min="1" step="0.1">
+            </div>
+            
+            <div class="imc-input-group">
+                <label for="altura">Altura (m)</label>
+                <input type="number" id="altura" placeholder="Ex: 1.75" min="0.1" step="0.01">
+            </div>
+            
+            <button class="imc-button" id="calcular-imc">Calcular IMC</button>
+            
+            <div class="imc-result" id="resultado-imc">
+                <div class="imc-value" id="valor-imc">--</div>
+                <div class="imc-classification" id="classificacao-imc">--</div>
+                <p class="imc-info" id="info-imc"></p>
+            </div>
+        </div>
+        
+        <table class="imc-table">
+            <thead>
+                <tr>
+                    <th>IMC</th>
+                    <th>Classificação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Abaixo de 18,5</td>
+                    <td>Abaixo do peso</td>
+                </tr>
+                <tr>
+                    <td>18,5 - 24,9</td>
+                    <td>Peso ideal</td>
+                </tr>
+                <tr>
+                    <td>25 - 29,9</td>
+                    <td>Sobrepeso</td>
+                </tr>
+                <tr>
+                    <td>30 - 34,9</td>
+                    <td>Obesidade grau I</td>
+                </tr>
+                <tr>
+                    <td>35 - 39,9</td>
+                    <td>Obesidade grau II</td>
+                </tr>
+                <tr>
+                    <td>Acima de 40</td>
+                    <td>Obesidade grau III</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!--De hoje! 22/10-->
+    <!--Calculadora de gasto calórico diário-->
+        <div class="calculator-container">
+        <h1>Calculadora de Gasto Calórico Diário</h1>
+        
+        <form id="calorieForm">
+            <div class="gender-group">
+                <div class="gender-option">
+                    <input type="radio" id="male" name="gender" value="male" checked>
+                    <label for="male" class="gender-label">Masculino</label>
+                </div>
+                <div class="gender-option">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female" class="gender-label">Feminino</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Idade (anos):</label>
+                <input type="number" id="age" min="15" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Peso (kg):</label>
+                <input type="number" id="weight" min="30" max="200" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="height">Altura (cm):</label>
+                <input type="number" id="height" min="100" max="250" required>
+            </div>
+
+            <div class="form-group">
+                <label for="activity">Nível de Atividade:</label>
+                <select id="activity" required>
+                    <option value="1.2">Sedentário (pouco ou nenhum exercício)</option>
+                    <option value="1.375">Levemente Ativo (exercício leve 1-3 dias/semana)</option>
+                    <option value="1.55">Moderadamente Ativo (exercício moderado 3-5 dias/semana)</option>
+                    <option value="1.725">Muito Ativo (exercício intenso 6-7 dias/semana)</option>
+                    <option value="1.9">Extremamente Ativo (exercício muito intenso + trabalho físico)</option>
+                </select>
+            </div>
+
+            <button type="submit">Calcular Gasto Calórico</button>
+        </form>
+
+        <div id="result" class="result">
+            <h3>Seu Gasto Calórico Diário</h3>
+            <div class="calories" id="totalCalories">0 kcal</div>
+            <div class="breakdown">
+                <div>Taxa Metabólica Basal: <span id="bmrValue">0</span> kcal</div>
+                <div>Gasto com Atividade: <span id="activityCalories">0</span> kcal</div>
+            </div>
+        </div>
+    </div>
+
+    <!--De hoje! 23/10-->
+    <!-- Calculadora de Macros (Proteína, Carboidrato e Gordura)-->
+     <section class="macro-calculator-section">
+        <h2>Calculadora de Macros</h2>
+        <div class="macro-calculator-container">
+            <div class="calculator-grid">
+                <div class="input-group">
+                    <label for="calories">Calorias Diárias</label>
+                    <input type="number" id="calories" placeholder="Ex: 2000">
+                </div>
+                <div class="input-group">
+                    <label for="goal">Objetivo</label>
+                    <select id="goal">
+                        <option value="loss">Perda de Peso</option>
+                        <option value="maintenance">Manutenção</option>
+                        <option value="gain">Ganho de Massa</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="activity">Nível de Atividade</label>
+                    <select id="activity">
+                        <option value="sedentary">Sedentário</option>
+                        <option value="light">Levemente Ativo</option>
+                        <option value="moderate">Moderadamente Ativo</option>
+                        <option value="active">Muito Ativo</option>
+                        <option value="extreme">Extremamente Ativo</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="diet-type">Tipo de Dieta</label>
+                    <select id="diet-type">
+                        <option value="balanced">Equilibrada</option>
+                        <option value="low-carb">Low Carb</option>
+                        <option value="high-protein">Alta Proteína</option>
+                        <option value="keto">Cetogênica</option>
+                    </select>
+                </div>
+            </div>
+            <button class="calculate-btn" id="calculate-macros">Calcular Macros</button>
+            
+            <div class="macro-results" id="macro-results">
+                <div class="macro-summary">
+                    <div class="macro-card">
+                        <h3>Proteína</h3>
+                        <p id="protein-result">0g</p>
+                    </div>
+                    <div class="macro-card">
+                        <h3>Carboidratos</h3>
+                        <p id="carbs-result">0g</p>
+                    </div>
+                    <div class="macro-card">
+                        <h3>Gordura</h3>
+                        <p id="fat-result">0g</p>
+                    </div>
+                </div>
+                
+                <div class="macro-distribution">
+                    <h3>Distribuição Percentual</h3>
+                    <div class="distribution-chart" id="distribution-chart">
+                        <div class="protein-bar" style="width: 0%"></div>
+                        <div class="carbs-bar" style="width: 0%"></div>
+                        <div class="fat-bar" style="width: 0%"></div>
+                    </div>
+                    <div class="distribution-labels">
+                        <span><div class="color-indicator protein-indicator"></div> Proteína: <span id="protein-percent">0%</span></span>
+                        <span><div class="color-indicator carbs-indicator"></div> Carboidratos: <span id="carbs-percent">0%</span></span>
+                        <span><div class="color-indicator fat-indicator"></div> Gordura: <span id="fat-percent">0%</span></span>
+                    </div>
+                </div>
+                
+                <div class="macro-details">
+                    <h3>Detalhes dos Macronutrientes</h3>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Calorias de Proteína:</span>
+                            <span class="detail-value" id="protein-calories">0 kcal</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Calorias de Carboidratos:</span>
+                            <span class="detail-value" id="carbs-calories">0 kcal</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Calorias de Gordura:</span>
+                            <span class="detail-value" id="fat-calories">0 kcal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--De hoje! 24/10-->
+    <!--Calculadora de TMB (Taxa Metabólica Basal)-->
+    <main class="main-content">
+        <section class="tmb-section">
+            <h2>Calculadora de Taxa Metabólica Basal (TMB)</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">
+                Calcule suas necessidades calóricas diárias em repouso para definir déficits ou superávits em seu plano alimentar.
+            </p>
+            
+      <form class="tmb-form" id="tmbForm">
+    <div class="tmb-input-group">
+        <label for="gender">Sexo</label>
+        <select id="gender" name="gender" required>
+            <option value="">Selecione</option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+        </select>
+    </div>
+    
+    <div class="tmb-input-group">
+        <label for="age">Idade (anos)</label>
+        <input type="number" id="age" name="age" min="15" max="100" required>
+    </div>
+    
+    <div class="tmb-input-group">
+        <label for="weight">Peso (kg)</label>
+        <input type="number" id="weight" name="weight" min="30" max="200" step="0.1" required>
+    </div>
+    
+    <div class="tmb-input-group">
+        <label for="height">Altura (cm)</label>
+        <input type="number" id="height" name="height" min="100" max="250" required>
+    </div>
+    
+    <!-- resto do formulário... -->
+                
+            <div class="tmb-input-group">
+    <label for="activity">Nível de Atividade</label>
+    <select id="activity" name="activity" required>
+        <option value="">Selecione</option>
+        <option value="1.2">Sedentário (pouco ou nenhum exercício)</option>
+        <option value="1.375">Levemente ativo (exercício leve 1-3 dias/semana)</option>
+        <option value="1.55">Moderadamente ativo (exercício moderado 3-5 dias/semana)</option>
+        <option value="1.725">Muito ativo (exercício intenso 6-7 dias/semana)</option>
+        <option value="1.9">Extremamente ativo (exercício muito intenso e trabalho físico)</option>
+    </select>
+</div>
+                
+                <button type="submit" class="tmb-calculate-btn">Calcular TMB</button>
+            </form>
+            
+            <div class="tmb-results" id="tmbResults">
+                <h3 style="text-align: center; margin-bottom: 1rem; color: var(--secondary-color);">Seus Resultados</h3>
+                <div class="tmb-value" id="tmbValue">0 calorias</div>
+                <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-color);">
+                    Esta é sua Taxa Metabólica Basal (TMB) - as calorias que seu corpo queima em repouso.
+                </p>
+                
+                <div class="tmb-calories">
+                    <div class="tmb-calorie-card">
+                        <h3>Manutenção</h3>
+                        <p id="maintenanceCalories">0</p>
+                        <p style="font-size: 0.9rem;">calorias/dia</p>
+                    </div>
+                    <div class="tmb-calorie-card">
+                        <h3>Perda de Peso</h3>
+                        <p id="weightLossCalories">0</p>
+                        <p style="font-size: 0.9rem;">calorias/dia</p>
+                    </div>
+                    <div class="tmb-calorie-card">
+                        <h3>Ganho de Peso</h3>
+                        <p id="weightGainCalories">0</p>
+                        <p style="font-size: 0.9rem;">calorias/dia</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tmb-info">
+                <h3>O que é a Taxa Metabólica Basal (TMB)?</h3>
+                <p>
+                    A Taxa Metabólica Basal (TMB) é a quantidade mínima de energia (calorias) que seu corpo precisa para manter as funções vitais em repouso, como respiração, circulação sanguínea e funcionamento celular.
+                </p>
+                <p>
+                    A fórmula de Harris-Benedict, utilizada nesta calculadora, é um método amplamente aceito para estimar a TMB com base no sexo, idade, peso e altura.
+                </p>
+                
+                <h3>Como usar esses resultados?</h3>
+                <ul>
+                    <li><strong>Manutenção:</strong> Para manter seu peso atual, consuma esta quantidade de calorias diariamente.</li>
+                    <li><strong>Perda de peso:</strong> Para perder peso, consuma 300-500 calorias a menos do que sua necessidade de manutenção.</li>
+                    <li><strong>Ganho de peso:</strong> Para ganhar peso, consuma 300-500 calorias a mais do que sua necessidade de manutenção.</li>
+                </ul>
+                
+                <p style="font-style: italic; margin-top: 1rem;">
+                    Nota: Estes valores são estimativas. Consulte um profissional de saúde para um plano personalizado.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!--De hoje! 25/10-->
+    <!-- Calculadora de Consumo de Água Diário-->
+<!-- SUBSTITUA TODA A SEÇÃO DA CALCULADORA POR ESTE CÓDIGO -->
+
+<section class="water-calculator-section">
+    <h2>Calculadora de Água Diária</h2>
+    <p class="calculator-subtitle">
+        Descubra a quantidade ideal de água que você deve consumir por dia
+    </p>
+
+    <div class="water-calculator-card">
+        <div class="calculator-inputs">
+            <div class="input-field">
+                <label for="weight-new">Seu Peso (kg)</label>
+                <input 
+                    type="text" 
+                    id="weight-new" 
+                    placeholder="Ex: 70">
+            </div>
+
+            <div class="activity-level">
+                <label>Nível de Atividade Física</label>
+                
+                <div class="activity-option" data-value="sedentary">
+                    <input type="radio" name="activity-new" id="sedentary-new" value="sedentary">
+                    <label for="sedentary-new" style="cursor: pointer;">
+                        <strong>Sedentário</strong><br>
+                        <small>Pouco ou nenhum exercício</small>
+                    </label>
+                </div>
+
+                <div class="activity-option" data-value="light">
+                    <input type="radio" name="activity-new" id="light-new" value="light">
+                    <label for="light-new" style="cursor: pointer;">
+                        <strong>Leve</strong><br>
+                        <small>Exercícios 1-3 vezes por semana</small>
+                    </label>
+                </div>
+
+                <div class="activity-option" data-value="moderate">
+                    <input type="radio" name="activity-new" id="moderate-new" value="moderate">
+                    <label for="moderate-new" style="cursor: pointer;">
+                        <strong>Moderado</strong><br>
+                        <small>Exercícios 3-5 vezes por semana</small>
+                    </label>
+                </div>
+
+                <div class="activity-option" data-value="intense">
+                    <input type="radio" name="activity-new" id="intense-new" value="intense">
+                    <label for="intense-new" style="cursor: pointer;">
+                        <strong>Intenso</strong><br>
+                        <small>Exercícios 6-7 vezes por semana</small>
+                    </label>
+                </div>
+
+                <div class="activity-option" data-value="athlete">
+                    <input type="radio" name="activity-new" id="athlete-new" value="athlete">
+                    <label for="athlete-new" style="cursor: pointer;">
+                        <strong>Atleta</strong><br>
+                        <small>Treinos intensos diários</small>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <button class="calculate-water-btn" id="calculate-btn-new">
+            Calcular Consumo Diário
+        </button>
+
+        <div class="water-result" id="waterResult-new">
+            <div class="result-value" id="resultValue-new">0 ml</div>
+            <div class="result-description">
+            </div>
+        </div>
+    </div>
+</section>
+
+           <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FitLife</h3>
+                <p>Excelência em resultados desde Março de 2025</p>
+            </div>
+            <div class="footer-section">
+                <h5>Navegação</h5>
+            <a href="../index.html">Início</a> 
+            <a href="../pages/treinos.html">Treinos</a>
+            <a href="nutricao.html">Nutrição</a>
+            <a href="suplementacao.html">Suplementação</a>
+            <a href="calculadoras.html">Calculadoras</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@fitlife.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FitLife. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+<script>
+    //Calculadora de imc
+     document.addEventListener('DOMContentLoaded', function() {
+            const pesoInput = document.getElementById('peso');
+            const alturaInput = document.getElementById('altura');
+            const calcularBtn = document.getElementById('calcular-imc');
+            const resultadoDiv = document.getElementById('resultado-imc');
+            const imcValor = document.getElementById('valor-imc');
+            const classificacao = document.getElementById('classificacao-imc');
+            const infoAdicional = document.getElementById('info-imc');
+            const tabelaLinhas = document.querySelectorAll('.imc-table tbody tr');
+            
+            calcularBtn.addEventListener('click', calcularIMC);
+            
+            // Permitir calcular pressionando Enter
+            [pesoInput, alturaInput].forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        calcularIMC();
+                    }
+                });
+            });
+            
+            function calcularIMC() {
+                const peso = parseFloat(pesoInput.value);
+                const altura = parseFloat(alturaInput.value);
+                
+                // Validação
+                if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+                    alert('Por favor, insira valores válidos para peso e altura.');
+                    return;
+                }
+                
+                // Cálculo do IMC
+                const imc = peso / (altura * altura);
+                const imcFormatado = imc.toFixed(1);
+                
+                // Classificação
+                let classificacaoTexto = '';
+                let classe = '';
+                let info = '';
+                
+                if (imc < 18.5) {
+                    classificacaoTexto = 'Abaixo do peso';
+                    classe = 'abaixo-peso';
+                    info = 'Recomenda-se consultar um nutricionista para uma avaliação mais detalhada.';
+                } else if (imc < 25) {
+                    classificacaoTexto = 'Peso ideal';
+                    classe = 'peso-ideal';
+                    info = 'Parabéns! Mantenha hábitos saudáveis para continuar assim.';
+                } else if (imc < 30) {
+                    classificacaoTexto = 'Sobrepeso';
+                    classe = 'sobrepeso';
+                    info = 'Atenção! Considere adotar uma alimentação mais equilibrada e praticar exercícios físicos.';
+                } else {
+                    classificacaoTexto = 'Obesidade';
+                    classe = 'obesidade';
+                    info = 'Recomenda-se buscar orientação médica e nutricional para um plano de saúde adequado.';
+                }
+                
+                // Exibir resultados
+                imcValor.textContent = imcFormatado;
+                classificacao.textContent = classificacaoTexto;
+                classificacao.className = 'imc-classification ' + classe;
+                infoAdicional.textContent = info;
+                
+                // Destacar linha correspondente na tabela
+                destacarLinhaTabela(imc);
+                
+                // Mostrar resultado
+                resultadoDiv.classList.add('active');
+            }
+            
+            function destacarLinhaTabela(imc) {
+                // Remover destaque anterior
+                tabelaLinhas.forEach(linha => linha.classList.remove('highlight'));
+                
+                // Destacar linha correspondente
+                if (imc < 18.5) {
+                    tabelaLinhas[0].classList.add('highlight');
+                } else if (imc < 25) {
+                    tabelaLinhas[1].classList.add('highlight');
+                } else if (imc < 30) {
+                    tabelaLinhas[2].classList.add('highlight');
+                } else if (imc < 35) {
+                    tabelaLinhas[3].classList.add('highlight');
+                } else if (imc < 40) {
+                    tabelaLinhas[4].classList.add('highlight');
+                } else {
+                    tabelaLinhas[5].classList.add('highlight');
+                }
+            }
+        });
+
+ document.addEventListener('DOMContentLoaded', function() {
+            // Elementos da interface
+            const genderBtns = document.querySelectorAll('.gender-btn');
+            const calcularBtn = document.getElementById('calcular');
+            const resultadoDiv = document.getElementById('resultado');
+            const percentualGorduraSpan = document.getElementById('percentual-gordura');
+            const classificacaoSpan = document.getElementById('classificacao');
+            const infoGorduraSpan = document.getElementById('info-gordura');
+            const historicoDiv = document.getElementById('historico');
+            const limparHistoricoBtn = document.getElementById('limpar-historico');
+            const quadrilContainer = document.getElementById('quadril-container');
+            
+            // Inicializar histórico
+            let historico = JSON.parse(localStorage.getItem('bodyFatHistory')) || [];
+            atualizarHistorico();
+            
+            // Alternar entre gêneros
+            genderBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    genderBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar/ocultar campo de quadril baseado no gênero
+                    if (this.dataset.gender === 'female') {
+                        quadrilContainer.style.display = 'flex';
+                    } else {
+                        quadrilContainer.style.display = 'none';
+                    }
+                });
+            });
+        })
+
+ //Calculadora de gasto calórico diáro
+  document.getElementById('calorieForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obter valores do formulário
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const age = parseInt(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseInt(document.getElementById('height').value);
+            const activityLevel = parseFloat(document.getElementById('activity').value);
+            
+            // Calcular Taxa Metabólica Basal (BMR) usando a fórmula de Mifflin-St Jeor
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+            
+            // Calcular gasto calórico total
+            const totalCalories = Math.round(bmr * activityLevel);
+            const activityCalories = Math.round(totalCalories - bmr);
+            
+            // Exibir resultados
+            document.getElementById('bmrValue').textContent = Math.round(bmr);
+            document.getElementById('activityCalories').textContent = activityCalories;
+            document.getElementById('totalCalories').textContent = totalCalories + ' kcal';
+            document.getElementById('result').classList.add('active');
+        });
+
+
+ //Calculadora de Macros (Proteína, Carboidrato e Gordura)
+
+  document.addEventListener('DOMContentLoaded', function() {
+            const calculateBtn = document.getElementById('calculate-macros');
+            const macroResults = document.getElementById('macro-results');
+            
+            calculateBtn.addEventListener('click', function() {
+                const calories = parseInt(document.getElementById('calories').value);
+                const goal = document.getElementById('goal').value;
+                const activity = document.getElementById('activity').value;
+                const dietType = document.getElementById('diet-type').value;
+                
+                if (!calories || calories <= 0) {
+                    alert('Por favor, insira um valor válido para as calorias diárias.');
+                    return;
+                }
+                
+                // Calcular macros baseado nas entradas
+                const macros = calculateMacros(calories, goal, activity, dietType);
+                
+                // Atualizar a interface com os resultados
+                updateMacroResults(macros);
+                
+                // Mostrar os resultados
+                macroResults.classList.add('active');
+            });
+            
+            function calculateMacros(calories, goal, activity, dietType) {
+                let proteinPercent, carbsPercent, fatPercent;
+                
+                // Definir distribuição percentual baseada no objetivo e tipo de dieta
+                switch(dietType) {
+                    case 'balanced':
+                        proteinPercent = 0.25;
+                        carbsPercent = 0.50;
+                        fatPercent = 0.25;
+                        break;
+                    case 'low-carb':
+                        proteinPercent = 0.30;
+                        carbsPercent = 0.30;
+                        fatPercent = 0.40;
+                        break;
+                    case 'high-protein':
+                        proteinPercent = 0.40;
+                        carbsPercent = 0.40;
+                        fatPercent = 0.20;
+                        break;
+                    case 'keto':
+                        proteinPercent = 0.20;
+                        carbsPercent = 0.05;
+                        fatPercent = 0.75;
+                        break;
+                    default:
+                        proteinPercent = 0.25;
+                        carbsPercent = 0.50;
+                        fatPercent = 0.25;
+                }
+                
+                // Ajustar baseado no objetivo
+                if (goal === 'loss') {
+                    // Aumentar proteína para preservação muscular
+                    proteinPercent += 0.05;
+                    carbsPercent -= 0.05;
+                } else if (goal === 'gain') {
+                    // Aumentar carboidratos para energia
+                    carbsPercent += 0.05;
+                    fatPercent -= 0.05;
+                }
+                
+                // Calcular calorias de cada macro
+                const proteinCalories = calories * proteinPercent;
+                const carbsCalories = calories * carbsPercent;
+                const fatCalories = calories * fatPercent;
+                
+                // Converter calorias em gramas (1g proteína = 4kcal, 1g carboidrato = 4kcal, 1g gordura = 9kcal)
+                const proteinGrams = Math.round(proteinCalories / 4);
+                const carbsGrams = Math.round(carbsCalories / 4);
+                const fatGrams = Math.round(fatCalories / 9);
+                
+                return {
+                    protein: proteinGrams,
+                    carbs: carbsGrams,
+                    fat: fatGrams,
+                    proteinPercent: Math.round(proteinPercent * 100),
+                    carbsPercent: Math.round(carbsPercent * 100),
+                    fatPercent: Math.round(fatPercent * 100),
+                    proteinCalories: Math.round(proteinCalories),
+                    carbsCalories: Math.round(carbsCalories),
+                    fatCalories: Math.round(fatCalories)
+                };
+            }
+            
+            function updateMacroResults(macros) {
+                // Atualizar valores em gramas
+                document.getElementById('protein-result').textContent = macros.protein + 'g';
+                document.getElementById('carbs-result').textContent = macros.carbs + 'g';
+                document.getElementById('fat-result').textContent = macros.fat + 'g';
+                
+                // Atualizar percentuais
+                document.getElementById('protein-percent').textContent = macros.proteinPercent + '%';
+                document.getElementById('carbs-percent').textContent = macros.carbsPercent + '%';
+                document.getElementById('fat-percent').textContent = macros.fatPercent + '%';
+                
+                // Atualizar gráfico de distribuição
+                const proteinBar = document.querySelector('.protein-bar');
+                const carbsBar = document.querySelector('.carbs-bar');
+                const fatBar = document.querySelector('.fat-bar');
+                
+                proteinBar.style.width = macros.proteinPercent + '%';
+                carbsBar.style.width = macros.carbsPercent + '%';
+                fatBar.style.width = macros.fatPercent + '%';
+                
+                // Atualizar calorias por macro
+                document.getElementById('protein-calories').textContent = macros.proteinCalories + ' kcal';
+                document.getElementById('carbs-calories').textContent = macros.carbsCalories + ' kcal';
+                document.getElementById('fat-calories').textContent = macros.fatCalories + ' kcal';
+            }
+        });
+
+    //Calculadora de TMB (Taxa Metabólica Basal)
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('tmbForm');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log("=== CÁLCULO INICIADO ===");
+        
+        // Método 1: FormData
+        const formData = new FormData(form);
+        const gender = formData.get('gender');
+        const age = formData.get('age');
+        const weight = formData.get('weight');
+        const height = formData.get('height');
+        const activity = formData.get('activity');
+        
+        console.log("Valores do FormData:", {gender, age, weight, height, activity});
+        
+        // Método 2: Direto dos elementos (backup)
+        const genderSelect = document.getElementById('gender');
+        const ageInput = document.getElementById('age');
+        const weightInput = document.getElementById('weight');
+        const heightInput = document.getElementById('height');
+        const activitySelect = document.getElementById('activity');
+        
+        const gender2 = genderSelect.value;
+        const age2 = ageInput.value;
+        const weight2 = weightInput.value;
+        const height2 = heightInput.value;
+        const activity2 = activitySelect.value;
+        
+        console.log("Valores diretos:", {gender2, age2, weight2, height2, activity2});
+        
+        // Usar os valores que funcionarem
+        const finalGender = gender || gender2;
+        const finalAge = age || age2;
+        const finalWeight = weight || weight2;
+        const finalHeight = height || height2;
+        const finalActivity = activity || activity2;
+        
+        console.log("Valores finais:", {finalGender, finalAge, finalWeight, finalHeight, finalActivity});
+        
+        if (!finalGender || !finalAge || !finalWeight || !finalHeight || !finalActivity) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+        
+        // Converter para números
+        const ageNum = parseInt(finalAge);
+        const weightNum = parseFloat(finalWeight);
+        const heightNum = parseInt(finalHeight);
+        const activityNum = parseFloat(finalActivity);
+        
+        console.log("Valores numéricos:", {ageNum, weightNum, heightNum, activityNum});
+        
+        // Calcular TMB
+        let tmb;
+        if (finalGender === 'male') {
+            tmb = 88.362 + (13.397 * weightNum) + (4.799 * heightNum) - (5.677 * ageNum);
+        } else {
+            tmb = 447.593 + (9.247 * weightNum) + (3.098 * heightNum) - (4.330 * ageNum);
+        }
+        
+        tmb = Math.round(tmb);
+        const maintenanceCalories = Math.round(tmb * activityNum);
+        const weightLossCalories = Math.round(maintenanceCalories - 500);
+        const weightGainCalories = Math.round(maintenanceCalories + 500);
+        
+        console.log("Resultados:", {tmb, maintenanceCalories, weightLossCalories, weightGainCalories});
+        
+        // Exibir resultados
+        document.getElementById('tmbValue').textContent = tmb + ' calorias';
+        document.getElementById('maintenanceCalories').textContent = maintenanceCalories;
+        document.getElementById('weightLossCalories').textContent = weightLossCalories;
+        document.getElementById('weightGainCalories').textContent = weightGainCalories;
+        
+        document.getElementById('tmbResults').classList.add('active');
+    });
+});
+
+    //De hoje! 23/10
+    // Calculadora de Consumo de Água Diário
+// CÓDIGO ISOLADO - TOTALMENTE NOVO (SEM ALERT)
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== CALCULADORA DE ÁGUA INICIADA ===');
+    
+    const weightInput = document.getElementById('weight-new');
+    const calculateBtn = document.getElementById('calculate-btn-new');
+    const activityOptions = document.querySelectorAll('.activity-option');
+    
+    // Selecionar primeira atividade
+    activityOptions[0].classList.add('selected');
+    document.getElementById('sedentary-new').checked = true;
+    
+    // Event listeners para atividades
+    activityOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            activityOptions.forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            const radio = this.querySelector('input[type="radio"]');
+            radio.checked = true;
+        });
+    });
+    
+    // Event listener para o botão (SEM ALERT)
+    calculateBtn.addEventListener('click', function() {
+        const weightValue = weightInput.value;
+        
+        if (!weightValue) {
+            alert('Por favor, insira seu peso');
+            return;
+        }
+        
+        const weight = parseFloat(weightValue);
+        if (isNaN(weight) || weight < 30 || weight > 200) {
+            alert('Por favor, insira um peso válido entre 30kg e 200kg');
+            return;
+        }
+        
+        const activityRadio = document.querySelector('input[name="activity-new"]:checked');
+        if (!activityRadio) {
+            alert('Por favor, selecione seu nível de atividade física');
+            return;
+        }
+        
+        // CÁLCULO
+        const activity = activityRadio.value;
+        const baseWater = weight * 35;
+        const multipliers = {
+            'sedentary': 1.0, 
+            'light': 1.1, 
+            'moderate': 1.2, 
+            'intense': 1.3, 
+            'athlete': 1.4
+        };
+        
+        const finalWater = Math.round(baseWater * multipliers[activity]);
+        let resultText = finalWater >= 1000 ? 
+            `${(finalWater/1000).toFixed(1)} L (${finalWater.toLocaleString('pt-BR')} ml)` : 
+            `${finalWater.toLocaleString('pt-BR')} ml`;
+        
+        // Atualizar interface (SEM ALERT)
+        document.getElementById('resultValue-new').textContent = resultText;
+        
+        // Atualizar garrafa visual
+        const waterBottle = document.getElementById('waterBottle');
+        if (waterBottle) {
+            const fillPercentage = Math.min((finalWater / 4000) * 100, 100);
+            waterBottle.style.setProperty('--fill-level', `${fillPercentage}%`);
+        }
+        
+        document.getElementById('waterResult-new').classList.add('active');
+    });
+    
+    // Enter no campo de peso
+    weightInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            calculateBtn.click();
+        }
+    });
+});
+ </script>
+
+</body>
+</html>
